@@ -1,3 +1,22 @@
+/* Projects.css */
+
+/* Estilo para la imagen del proyecto */
+.project-snapshot {
+    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px; /* Espacio antes del título */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    aspect-ratio: 16 / 9; /* Mantiene una relación de aspecto de pantalla ancha */
+    filter: brightness(0.9); /* Oscurece ligeramente la imagen */
+    transition: filter 0.3s;
+}
+
+/* Mejora el hover en la tarjeta */
+.project-card:hover .project-snapshot {
+    filter: brightness(1); /* La imagen se ilumina al pasar el ratón */
+}
+
 .projects {
   padding: 60px 20px;
   text-align: center;

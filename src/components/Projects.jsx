@@ -1,73 +1,64 @@
+// Projects.jsx (Snippet de la lógica principal)
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
 
-// Usamos la variable de entorno que definimos
-// En un proyecto real, se accedería así: process.env.REACT_APP_API_URL
-// Por simplicidad en este ejemplo, la definimos primero.
-//const API_ENDPOINT = process.env.REACT_APP_API_URL || 'https://nombre-de-tu-servicio.onrender.com/api/projects'; 
-const API_ENDPOINT = 'https://portfolio-ddr-backend.onrender.com/api/projects';
+// La URL ya la tenemos definida:
+const API_ENDPOINT = 'https://portfolio-ddr-backend.onrender.com/api/projects'; 
 
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(API_ENDPOINT);
-        
-        if (!response.ok) {
-          // Si el fetch falla (ej: 404, 500)
-          throw new Error(`HTTP error! Status: ${response.status}. Check CORS or API endpoint.`);
-        }
-        
         const data = await response.json();
-        // Los datos deben coincidir con la estructura de tu tabla (title, description, link_url, link_text)
+        // Asume que la respuesta es un array de proyectos
         setProjects(data); 
-
-      } catch (e) {
-        console.error("Error fetching projects:", e);
-        setError("Error al cargar los proyectos desde el servidor.");
-      } finally {
         setLoading(false);
+      } catch (error) {
+        console.error("Error al cargar los proyectos:", error);
+        setLoading(false);
+        // Opcional: setProjects([]); para no mostrar nada
       }
     };
-
     fetchProjects();
   }, []);
 
-  // --- Renderizado Condicional ---
-
   if (loading) {
-    return <section className="projects"><h2>Cargando Proyectos...</h2></section>;
+    return (
+      <section className="projects">
+        <h2>Featured Projects</h2>
+        <p>Cargando proyectos...</p>
+      </section>
+    );
   }
-
-  if (error) {
-    return <section className="projects"><h2>Error de Conexión</h2><p>{error}</p></section>;
-  }
-  
-  // Si no hay proyectos (ej: tabla vacía)
-  if (projects.length === 0) {
-    return <section className="projects"><h2>No hay proyectos disponibles.</h2></section>;
-  }
-
 
   return (
     <section className="projects">
-      <h2>Featured Projects</h2>
+      <h2>Featured Projects!</h2>
       <div className="projects-grid">
-        {/* El CSS original usaba un 'delay' fijo, ahora lo hacemos dinámico por el índice */}
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <motion.div 
-            key={project.id} // Usamos el ID de la BD como key única
+            key={project.id} 
             className="project-card"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }} // Retraso dinámico 
+            transition={{ duration: 0.5, delay: 0.1 * project.id }} // Usa el ID para un stagger effect
             whileHover={{ scale: 1.05 }}
           >
+            {/* 🚨 AQUÍ SE RENDERIZA LA IMAGEN Y LOS DATOS DE LA DB */}
+            {project.image_url && (
+              <img 
+                src={project.image_url} 
+                alt={`Snapshot del proyecto ${project.title}`} 
+                className="project-snapshot" 
+              />
+            )}
+            
             <h3>{project.title}</h3>
             <p>{project.description}</p>
             <a 
@@ -76,7 +67,7 @@ function Projects() {
               rel="noopener noreferrer" 
               className="project-btn"
             >
-              {project.link_text || 'Ver Proyecto'}
+              {project.link_text || "View App"}
             </a>
           </motion.div>
         ))}
