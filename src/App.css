@@ -4,7 +4,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(-45deg, #0f0f10, #1a1a1d, #2575fc, #6a11cb);
+  /* MODIFICACIÓN: Colores de degradado a tonos rojos/granates */
+  background: linear-gradient(-45deg, #0f0f10, #1a1a1d, #B71C1C, #6A0000); 
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
   color: #f0f0f0;

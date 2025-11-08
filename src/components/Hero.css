@@ -19,7 +19,7 @@
 .cta-button {
   display: inline-block;
   padding: 12px 28px;
-  background: #6a11cb;
+  background: #b910cf;
   color: white;
   border-radius: 30px;
   text-decoration: none;
@@ -29,7 +29,7 @@
 }
 
 .cta-button:hover {
-  background: #2575fc;
+  background: #e876f7;
 }
 
 @media (max-width: 768px) {

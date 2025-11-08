@@ -1,22 +1,5 @@
 /* Projects.css */
 
-/* Estilo para la imagen del proyecto */
-.project-snapshot {
-    width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px; /* Espacio antes del título */
-    object-fit: cover; /* Asegura que la imagen no se distorsione */
-    aspect-ratio: 16 / 9; /* Mantiene una relación de aspecto de pantalla ancha */
-    filter: brightness(0.9); /* Oscurece ligeramente la imagen */
-    transition: filter 0.3s;
-}
-
-/* Mejora el hover en la tarjeta */
-.project-card:hover .project-snapshot {
-    filter: brightness(1); /* La imagen se ilumina al pasar el ratón */
-}
-
 .projects {
   padding: 60px 20px;
   text-align: center;
@@ -37,6 +20,7 @@
 }
 
 .project-card {
+  /* Fondo oscuro de la tarjeta (lo mantienes) */
   background: rgba(30, 30, 34, 0.9);
   border-radius: 15px;
   padding: 25px;
@@ -44,6 +28,7 @@
   transition: 0.3s;
 }
 
+/* Color del título y descripción (lo mantienes) */
 .project-card h3 {
   color: #fff;
 }
@@ -54,10 +39,12 @@
   margin: 10px 0 15px;
 }
 
+/* === MODIFICACIÓN CLAVE: EL BOTÓN === */
 .project-btn {
   display: inline-block;
   padding: 10px 20px;
-  background: #2575fc;
+  /* 🔴 Nuevo Color Principal: Un rojo vibrante */
+  background: #E53935; /* Rojo Ladrillo */
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -66,5 +53,30 @@
 }
 
 .project-btn:hover {
-  background: #6a11cb;
+  /* 🟣 Nuevo Color de Hover: Un granate/morado oscuro para contraste */
+  background: #B71C1C; /* Granate más oscuro */
+}
+
+/* === ESTILO DE IMAGEN (Mantener el estilo si no estaba) === */
+.project-snapshot {
+    width: 100%; 
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px; 
+    object-fit: cover; 
+    aspect-ratio: 16 / 9; 
+    display: block;
+    filter: brightness(0.9); 
+    transition: filter 0.3s;
+}
+
+.project-card:hover .project-snapshot {
+    filter: brightness(1); 
+}
+
+/* Mejora el efecto hover de la tarjeta */
+.project-card:hover {
+    /* 💥 Nuevo Box Shadow: Tono de rojo en el borde */
+    box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4); 
+    transform: scale(1.05);
 }

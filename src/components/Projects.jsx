@@ -1,56 +1,57 @@
-// Projects.jsx (Snippet de la lógica principal)
-
+// Projects.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Projects.css';
 
-// La URL ya la tenemos definida:
+// URL de la API de Render (Ya verificamos que funciona)
 const API_ENDPOINT = 'https://portfolio-ddr-backend.onrender.com/api/projects'; 
 
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Hook para cargar los datos al montar el componente
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(API_ENDPOINT);
         const data = await response.json();
-        // Asume que la respuesta es un array de proyectos
         setProjects(data); 
         setLoading(false);
       } catch (error) {
-        console.error("Error al cargar los proyectos:", error);
+        console.error("Error loaing site list:", error);
         setLoading(false);
-        // Opcional: setProjects([]); para no mostrar nada
+        // Opcional: setProjects([]); si quieres mostrar un error específico
       }
     };
     fetchProjects();
-  }, []);
+  }, []); // El array vacío asegura que se ejecute solo al inicio
 
   if (loading) {
     return (
       <section className="projects">
-        <h2>Featured Projects</h2>
-        <p>Cargando proyectos...</p>
+        <h2>Featured Sites</h2>
+        <p>Loading List...</p>
       </section>
     );
   }
 
   return (
     <section className="projects">
-      <h2>Featured Projects!</h2>
+      <h2>Featured Sites</h2>
       <div className="projects-grid">
-        {projects.map((project) => (
+        {/* ITERACIÓN DINÁMICA DE LOS PROYECTOS */}
+        {projects.map((project, index) => (
           <motion.div 
             key={project.id} 
             className="project-card"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * project.id }} // Usa el ID para un stagger effect
+            // Ajuste el delay para que la animación sea escalonada
+            transition={{ duration: 0.8, delay: 0.1 * index }} 
             whileHover={{ scale: 1.05 }}
           >
-            {/* 🚨 AQUÍ SE RENDERIZA LA IMAGEN Y LOS DATOS DE LA DB */}
+            {/* 🚨 AQUÍ SE CARGA LA IMAGEN CON LA URL DE LA BASE DE DATOS */}
             {project.image_url && (
               <img 
                 src={project.image_url} 
