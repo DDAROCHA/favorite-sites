@@ -10,7 +10,7 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 1 }}
       >
-        Hello! 👋 I'm Diego
+        This is a List of my Favorite Sites
       </motion.h2>
 
       <motion.p 
@@ -18,8 +18,8 @@ function Hero() {
         animate={{ opacity: 1 }} 
         transition={{ delay: 0.5, duration: 1 }}
       >
-        Passionate about building <strong>modern applications</strong> with focus on 
-        <strong> Artificial Intelligence</strong>, clean design, high performance and scalability.
+        Do <strong>YOU </strong> Like
+        <strong> IT?</strong>
       </motion.p>
 
       {/* Botón pulsando */}
