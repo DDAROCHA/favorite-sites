@@ -29,7 +29,7 @@ function Hero() {
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        Get in Touch
+        Get in Touch ME
       </motion.a>
     </section>
   );
