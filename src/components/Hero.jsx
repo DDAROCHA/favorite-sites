@@ -306,13 +306,12 @@ function Hero({ onProjectsRefresh }) {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    Add Site
+                    <strong>Add Site</strong>
                 </motion.button>
 
                 <motion.button 
                     onClick={() => setShowAboutModal(true)}
-                    // 🚨 CORRECCIÓN: Quitamos la clase extra y nos quedamos solo con las de estilo
-                    className="cta-button tertiary-btn"
+                    className="cta-button secondary-btn"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
