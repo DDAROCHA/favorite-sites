@@ -12,28 +12,272 @@
 .hero p {
   font-size: 1.1rem;
   max-width: 700px;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px; /* Aumentamos el margen para los botones */
   color: #cfcfcf;
 }
 
+/* Nuevo Contenedor para alinear los botones */
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre botones */
+    flex-wrap: wrap; /* Para que se ajusten en móvil */
+}
+
+/* === ESTILOS BASE DE BOTÓN (ROJO) === */
 .cta-button {
-  display: inline-block;
+  display: inline-flex; /* Cambio a flex para centrar contenido (icono + texto) */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
   padding: 12px 28px;
-  background: #b910cf;
+  /* Colores de acento rojo/granate */
+  background: #E53935; /* Rojo Vibrante */
   color: white;
-  border-radius: 30px;
+  border-radius: 30px; /* Borde muy redondeado */
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
+  border: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .cta-button:hover {
-  background: #e876f7;
+  background: #B71C1C; /* Granate Oscuro */
 }
+
+/* === MODIFICACIONES DE COLOR PARA OTROS BOTONES === */
+.secondary-btn {
+    background: #5A1E1E; /* Rojo más discreto */
+}
+.secondary-btn:hover {
+    background: #E53935;
+}
+
+/* 🚨 CORRECCIÓN FINAL: Estilo para el botón 'ABOUT' */
+.tertiary-btn {
+    background: #2A2A2A !important; /* Gris Oscuro */
+    box-shadow: none !important; /* Sin sombra para este */
+    border-radius: 8px; /* Un poco menos redondeado */
+}
+.tertiary-btn:hover {
+    background: #3A3A3A !important;
+}
+
+
+/* ============================= */
+/* 🔳 Estilos de Modales         */
+/* ============================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85); /* Fondo semitransparente oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #1e1e1e; /* Fondo oscuro del modal */
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(229, 57, 53, 0.4); /* Sombra de acento rojo */
+    color: #f0f0f0;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+    color: #E53935; /* Acuario rojo al pasar el mouse */
+}
+
+/* === Estilos del Formulario de Adición === */
+.form-modal {
+    max-width: 500px;
+}
+
+.form-modal h3 {
+    color: #E53935;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-modal label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: bold;
+}
+
+.form-modal input[type="text"],
+.form-modal input[type="url"],
+.form-modal textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px; /* Bordes redondeados */
+    color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+.form-modal textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Estilo del botón de envío del formulario (Aplica el estilo redondeado del .cta-button) */
+.modal-submit-btn {
+    /* Usamos el estilo base .cta-button (que ya tiene border-radius: 30px), solo ajustamos el ancho */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.modal-submit-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+/* Estilos para el nuevo grupo de entrada de imagen con botón "Browse" */
+.image-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center; /* Asegura la alineación vertical */
+}
+
+.image-input-group input[type="text"],
+.image-input-group input[type="url"] {
+    flex-grow: 1;
+    margin-bottom: 0; /* Eliminar el margen inferior duplicado */
+    height: 40px; /* Consistencia de altura */
+}
+
+.file-input-label {
+    /* Estilo del botón 'Browse' */
+    padding: 10px 15px;
+    height: 40px; 
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px; /* Redondeado */
+    margin-bottom: 0 !important; /* Asegurar que no tenga margen inferior */
+}
+
+.toggle-button {
+    background: #4A4A4A;
+    color: white;
+    padding: 0 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    height: 40px; /* Alineación con el input */
+}
+
+.toggle-button:hover {
+    background: #6A6A6A;
+}
+
+
+/* === Mensajes de estado === */
+.form-message.warning {
+    color: #ffc107; /* Amarillo para advertencia */
+    margin-top: 10px;
+    font-weight: bold;
+}
+.form-message.error {
+    color: #ff8a80; /* Rojo claro para errores */
+    margin-top: 10px;
+    font-weight: bold;
+}
+.form-message.success {
+    color: #81c784; /* Verde claro para éxito */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+
+/* === Estilos del Modal "Acerca de" === */
+.about-modal {
+    max-width: 600px;
+    text-align: left;
+}
+.about-modal h4 {
+    color: #E53935;
+    margin-top: 0;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+.about-modal h5 {
+    color: #aaa;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+.about-modal ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.about-modal li {
+    background: #2a2a2a;
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-left: 3px solid #E53935; /* Borde de acento rojo */
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #ddd;
+}
+.about-modal footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
 
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 1.8rem;
+  }
+  .hero-actions {
+      flex-direction: column;
+      gap: 10px;
+  }
+  .cta-button {
+      width: 100%;
+  }
+  /* Ajuste para dispositivos móviles */
+  .image-input-group {
+      flex-direction: column;
+      gap: 10px;
+  }
+  /* Hacer que los elementos de control de imagen ocupen todo el ancho */
+  .file-input-label, .toggle-button {
+      width: 100%;
+      height: auto;
+      justify-content: center;
   }
 }
