@@ -279,7 +279,7 @@ function Hero({ onProjectsRefresh }) {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ duration: 1 }}
             >
-                This is a List of my Favorite Sites
+                This is a List of my Favorite Sites 😁
             </motion.h2>
 
             <motion.p 
